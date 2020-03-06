@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 
 type InputProps = {
-  defaultValue: String,
+  defaultValue?: string,
+  type: "text" | "number",
 }
 
-function CustomInput(props: InputProps = { defaultValue: 'PLACEHOLDER'}) {
+function CustomInput(props: InputProps = { 
+  defaultValue: 'PLACEHOLDER',
+  type: 'text',
+}) {
   const [value, onChangeText] = useState(props.defaultValue);
 
   return (
@@ -16,6 +20,7 @@ function CustomInput(props: InputProps = { defaultValue: 'PLACEHOLDER'}) {
         style={styles.input}
         onChangeText={text => onChangeText(text)}
         value={value}
+        keyboardType={props.type === 'number' ? 'numeric' : 'default'}
       />
       </View>
   );

@@ -24,10 +24,12 @@ function CustomModal(props: ModalProps) {
           <View style={styles.modalContainer}>
             <Text style={styles.title}>{props.title}</Text>
               {props.children}
-              <Button 
-                text={props.buttonText}
-                pressHandler={() => props.closeHandler()}
-              />
+              <View style={styles.buttonContainer}>
+                <Button
+                  text={props.buttonText}
+                  pressHandler={() => props.closeHandler()}
+                />
+              </View>
           </View>
         </View>
       </Modal>
@@ -52,6 +54,11 @@ const styles = StyleSheet.create({
     color: '#4A4A4A',
     marginTop: 10,
     marginBottom: 10,
+  },
+  buttonContainer: {
+    display: 'flex',
+    marginTop: 20,
+    alignItems: 'center',
   },
 });
 

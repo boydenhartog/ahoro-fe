@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import Modal from '../../components/modal';
-import CustomInput from '../../components/textinput';
+import TextInput from '../../components/textinput';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -14,13 +14,13 @@ export default function App() {
         closeHandler={() => dispatch({ type: 'HIDE_EXPENSE_MODAL' })}
       >
         <Text style={styles.inputText}>Amount</Text>
-        <CustomInput />
+        <TextInput type='number' />
         <Text style={styles.inputText}>Description</Text>
-        <CustomInput />
+        <TextInput type='text' />
         <Text style={styles.inputText}>Currency</Text>
-        <CustomInput />
+        <TextInput type='text' />
         <Text style={styles.inputText}>Date</Text>
-        <CustomInput />
+        <TextInput type='text' />
     </Modal>
   );
 }
