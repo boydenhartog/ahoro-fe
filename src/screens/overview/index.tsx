@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-
-import Goals from './goals';
+import Expenses from './expensesContainer';
 
 function Overview() {
-  // const [count, setCount] = useState(0);
-
   return (
     <View style={sheet.flexContainer}>
       <View style={[sheet.container, sheet.topContainer]}>
         <Text style={sheet.screenTitle}>Summary</Text>
-        
+
         <View style={sheet.mainContainer}>
           <View style={sheet.container}>
             <Text style={sheet.title}>Today</Text>
@@ -27,10 +24,12 @@ function Overview() {
               </View>
             </View>
           </View>
-          
         </View>
+
         <View style={sheet.mask}></View>
-        <Goals />
+        
+        <Expenses />
+
       </View>
     </View>
   );

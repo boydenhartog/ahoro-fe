@@ -10,9 +10,7 @@ interface ButtonProps {
 function CustomButton(props: ButtonProps) {
   return (
     <TouchableOpacity onPress={() => props.pressHandler()}>
-      <View
-        style={styles.button}
-      >
+      <View style={styles.button}>
         <Text style={styles.buttonText}>{props.text}</Text>
       </View>
     </TouchableOpacity>

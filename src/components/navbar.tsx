@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 function NavBar() {
-  // const [count, setCount] = useState(0);
   const dispatch = useDispatch();
 
   return (

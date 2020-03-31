@@ -4,25 +4,30 @@ import { StyleSheet, Text, View, TextInput } from 'react-native';
 type InputProps = {
   defaultValue?: string,
   type: "text" | "number",
-}
+  placeholder: string,
+  onChangeText: Function
+};
 
-function CustomInput(props: InputProps = { 
-  defaultValue: 'PLACEHOLDER',
-  type: 'text',
-}) {
-  const [value, onChangeText] = useState(props.defaultValue);
+function CustomInput(
+  props: InputProps = {
+    defaultValue: "PLACEHOLDER",
+    type: "text",
+    placeholder: "placeholder",
+    onChangeText: () => {},
+  }
+) {
+  // const [value, onChangeText] = useState(props.defaultValue);
 
   return (
-      <View
-        style={styles.container}
-      >
+    <View style={styles.container}>
       <TextInput
         style={styles.input}
-        onChangeText={text => onChangeText(text)}
-        value={value}
-        keyboardType={props.type === 'number' ? 'numeric' : 'default'}
+        onChangeText={text => props.onChangeText(text)}
+        // value={value}
+        keyboardType={props.type === "number" ? "numeric" : "default"}
+        placeholder={props.placeholder}
       />
-      </View>
+    </View>
   );
 }
 

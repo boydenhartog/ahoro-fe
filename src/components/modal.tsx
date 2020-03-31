@@ -1,7 +1,8 @@
 import React, { ReactNode } from 'react';
-import { StyleSheet, Text, View, Modal } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import Button from './button';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 type ModalProps = {
   title: String,
@@ -12,27 +13,22 @@ type ModalProps = {
 
 function CustomModal(props: ModalProps) {
   const ui = useSelector(state => state.ui);
-
+  
   return (
-      <Modal
-        visible={ui.showExpenseModal}
-        animationType={'slide'}
-        onRequestClose={() => props.closeHandler()}
-        transparent
-      >
-        <View style={styles.container}>
-          <View style={styles.modalContainer}>
-            <Text style={styles.title}>{props.title}</Text>
-              {props.children}
-              <View style={styles.buttonContainer}>
-                <Button
-                  text={props.buttonText}
-                  pressHandler={() => props.closeHandler()}
-                />
-              </View>
-          </View>
-        </View>
-      </Modal>
+    <View style={styles.container}>
+      <View style={styles.modalContainer}>
+        <TouchableOpacity onPress={() => props.closeHandler()}>
+        </TouchableOpacity>
+        <Text style={styles.title}>{props.title}</Text>
+        {props.children}
+        {/* <View style={styles.buttonContainer}>
+          <Button
+            text={props.buttonText}
+            pressHandler={() => props.closeHandler()}
+          />
+        </View> */}
+      </View>
+    </View>
   );
 }
 
@@ -41,11 +37,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#00000080',
+    height: '100%',
+    width: '100%',
   },
   modalContainer: {
     borderRadius: 6,
     width: 320,
+    // height: 600,
     padding: 12,
     backgroundColor: 'white',
   },

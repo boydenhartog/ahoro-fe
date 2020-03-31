@@ -6,15 +6,15 @@ import Navbar from '../components/navbar';
 import ExpenseModal from './expenses/expenseModal';
 
 
-export default function App() {
+export default function Home() {
   const ui = useSelector(state => state.ui);
-
+  
   return (
     <View style={styles.container}>
       <Overview />
       <Navbar />
 
-      {ui.showExpenseModal && <ExpenseModal/>}
+      {ui.showExpenseModal && <ExpenseModal />}
     </View>
   );
 }
