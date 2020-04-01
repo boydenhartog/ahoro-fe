@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import moment from "moment";
+import MotionBlock from "../../components/motionBlock";
 import { Colors } from "../../styles";
 import Day from "./day";
 
@@ -30,14 +31,15 @@ export default function DateSelector({ setValue }) {
   return (
     <View style={styles.container}>
       <Text></Text>
-      {Days.map(({ day, text }) => (
-        <Day
-          key={day}
-          day={day}
-          text={text}
-          selected={day === selectedDay}
-          setDay={selectDay}
-        />
+      {Days.map(({ day, text }, index) => (
+        <MotionBlock delay={index * 30} key={day}>
+          <Day
+            day={day}
+            text={text}
+            selected={day === selectedDay}
+            setDay={selectDay}
+          />
+        </MotionBlock>
       ))}
     </View>
   );

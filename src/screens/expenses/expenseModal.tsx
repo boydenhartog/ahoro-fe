@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View, Alert, TextInput, Text } from "react-native";
+import {
+  StyleSheet,
+  Alert,
+  TextInput,
+  Text,
+  ActivityIndicator
+} from "react-native";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import moment from "moment";
+import { Colors } from "../../styles";
 import { useFixerApi } from "../../hooks/fixerApi";
 import Modal from "../../components/modal";
 import Overlay from "../../components/overlay";
@@ -56,37 +63,56 @@ export default function ExpenseModal() {
           buttonText="Close modal"
           closeHandler={() => dispatch({ type: "HIDE_EXPENSE_MODAL" })}
         >
-          <TextInput
-            keyboardType={"numeric"}
-            placeholder="amount"
-            onChangeText={number => {
-              setValue("amount", number);
-            }}
-            style={styles.input}
-          />
-          <TextInput
-            keyboardType={"default"}
-            placeholder="currency"
-            onChangeText={text => {
-              setValue("currency", text);
-            }}
-            style={styles.input}
-          />
-          
-          <DateSelector setValue={setValue} />
-          
-          <Text>
-            {isLoading && "Loading.."}
-            {data && JSON.stringify(data)}
-            {isError && isError}
-          </Text>
+          {isLoading && (
+            <ActivityIndicator size="large" color={Colors.primary} />
+          )}
 
-          <View style={styles.buttonContainer}>
-            <Button
-              text={"add expense"}
-              pressHandler={handleSubmit(onSubmit)}
-            />
-          </View>
+          {!isLoading && !isError && (
+            <>
+              <MotionBlock delay={50}>
+                <Text style={styles.title}>Add expense</Text>
+              </MotionBlock>
+              <MotionBlock delay={75}>
+                <TextInput
+                  keyboardType={"numeric"}
+                  placeholder="amount"
+                  onChangeText={number => {
+                    setValue("amount", number);
+                  }}
+                  style={styles.input}
+                />
+              </MotionBlock>
+
+              <MotionBlock delay={100}>
+                <TextInput
+                  keyboardType={"default"}
+                  placeholder="currency"
+                  onChangeText={text => {
+                    setValue("currency", text);
+                  }}
+                  style={styles.input}
+                />
+              </MotionBlock>
+
+              <MotionBlock delay={125}>
+                <DateSelector setValue={setValue} />
+              </MotionBlock>
+
+              <MotionBlock delay={225} style={styles.buttonContainer}>
+                <Button
+                  text={"add expense"}
+                  pressHandler={handleSubmit(onSubmit)}
+                />
+              </MotionBlock>
+            </>
+          )}
+
+          {!isLoading && isError && (
+            <Text>
+              Something went wrong.. {'\n'}
+              Please try again later
+            </Text>
+          )}
         </Modal>
       </MotionBlock>
     </>
@@ -115,12 +141,22 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   input: {
-    height: 40, 
-    borderColor: '#4A4A4A', 
-    borderWidth: 1, 
+    height: 40,
+    borderColor: "#4A4A4A",
+    borderWidth: 1,
     borderRadius: 6,
     paddingLeft: 10,
-    color: '#4A4A4A',
-    marginBottom: 8,
+    color: "#4A4A4A",
+    marginBottom: 16
+  },
+  title: {
+    fontSize: 32,
+    color: "#4A4A4A",
+    marginTop: 10,
+    marginBottom: 16
+  },
+  lottie: {
+    width: 100,
+    height: 100
   }
 });

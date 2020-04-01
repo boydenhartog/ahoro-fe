@@ -7,11 +7,15 @@ type MotionProps = {
   children?: ReactNode, 
 }
 
-const MotionBlock = (props: MotionProps = { style: {}, delay: 0.2 }) => {
+const MotionBlock = (props: MotionProps = { style: {}, delay: 0 }) => {
   const [fadeAnim] = useState(new Animated.Value(0));
  
   useEffect(() => {
-    Animated.spring(fadeAnim, { toValue: 1, delay: props.delay }).start();
+    Animated.spring(fadeAnim, { 
+      toValue: 1, 
+      delay: props.delay, 
+      useNativeDriver: true 
+    }).start();
   });
 
   return (

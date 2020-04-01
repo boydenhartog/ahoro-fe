@@ -19,7 +19,6 @@ function CustomModal(props: ModalProps) {
       <View style={styles.modalContainer}>
         <TouchableOpacity onPress={() => props.closeHandler()}>
         </TouchableOpacity>
-        <Text style={styles.title}>{props.title}</Text>
         {props.children}
         {/* <View style={styles.buttonContainer}>
           <Button
@@ -46,12 +45,6 @@ const styles = StyleSheet.create({
     // height: 600,
     padding: 12,
     backgroundColor: 'white',
-  },
-  title: {
-    fontSize: 32,
-    color: '#4A4A4A',
-    marginTop: 10,
-    marginBottom: 10,
   },
   buttonContainer: {
     display: 'flex',

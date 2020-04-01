@@ -57,8 +57,10 @@ export function useFixerApi():  [{
           url: `${FIXER_API_URL}/latest?access_key=${FIXER_API_KEY}`
         });
         setData(result.data);
+        setIsLoading(false);
       } catch (error) {
         setIsError(true);
+        setIsLoading(false);
       }
     };
 
