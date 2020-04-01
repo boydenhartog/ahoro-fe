@@ -1,11 +1,12 @@
-import React, { useEffect } from "react";
-import { StyleSheet, View, Alert, TextInput } from "react-native";
+import React, { useEffect, useState } from "react";
+import { StyleSheet, View, Alert, TextInput, Text } from "react-native";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import moment from "moment";
+import { useFixerApi } from "../../hooks/fixerApi";
 import Modal from "../../components/modal";
 import Overlay from "../../components/overlay";
-import SlideView from "../../components/slideView";
+import MotionBlock from "../../components/motionBlock";
 import DateSelector from "./dateSelector";
 import Button from "../../components/button";
 
@@ -14,7 +15,6 @@ type FormData = {
   currency: string;
   date: string;
 };
-
 
 function getDate(selectedDayOfWeek: number) {
   const currentDayOfWeek = moment().isoWeekday();
@@ -26,6 +26,7 @@ function getDate(selectedDayOfWeek: number) {
 export default function ExpenseModal() {
   const { register, handleSubmit, setValue } = useForm<FormData>();
   const dispatch = useDispatch();
+  const [{ data, isLoading, isError }, fetchUrl] = useFixerApi();
 
   useEffect(() => {
     register('amount');
@@ -49,7 +50,7 @@ export default function ExpenseModal() {
       <Overlay
         onClose={() => dispatch({ type: "HIDE_EXPENSE_MODAL" })}
       ></Overlay>
-      <SlideView style={styles.modalContainer}>
+      <MotionBlock style={styles.modalContainer}>
         <Modal
           title="add expense"
           buttonText="Close modal"
@@ -73,6 +74,12 @@ export default function ExpenseModal() {
           />
           
           <DateSelector setValue={setValue} />
+          
+          <Text>
+            {isLoading && "Loading.."}
+            {data && JSON.stringify(data)}
+            {isError && isError}
+          </Text>
 
           <View style={styles.buttonContainer}>
             <Button
@@ -81,7 +88,7 @@ export default function ExpenseModal() {
             />
           </View>
         </Modal>
-      </SlideView>
+      </MotionBlock>
     </>
   );
 }

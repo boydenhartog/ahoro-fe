@@ -7,7 +7,7 @@ function ExpensesContainer() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Todays expenses: {expenses.length}</Text>
+      <Text style={styles.title}>Expenses: {expenses.length}</Text>
       <View style={styles.daysContainer}>
 
       </View>

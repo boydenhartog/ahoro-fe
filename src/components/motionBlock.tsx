@@ -1,11 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { Animated } from 'react-native';
+import React, { useState, useEffect, ReactNode } from "react";
+import { Animated, ViewStyle } from 'react-native';
 
-const SlideView = (props) => {
+type MotionProps = {
+  style?: ViewStyle,
+  delay?: number,
+  children?: ReactNode, 
+}
+
+const MotionBlock = (props: MotionProps = { style: {}, delay: 0.2 }) => {
   const [fadeAnim] = useState(new Animated.Value(0));
  
   useEffect(() => {
-    Animated.spring(fadeAnim, { toValue: 1 }).start();
+    Animated.spring(fadeAnim, { toValue: 1, delay: props.delay }).start();
   });
 
   return (
@@ -26,4 +32,4 @@ const SlideView = (props) => {
   );
 }
 
-export default SlideView;
+export default MotionBlock;
