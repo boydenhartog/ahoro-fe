@@ -9,19 +9,6 @@ function NavBar() {
 
   return (
     <View style={styles.flexContainer}>
-      <View style={styles.flexButton}>
-        <Text style={styles.buttonText}>Button</Text>
-      </View>
-      <View style={styles.flexButton}>
-        <Text style={styles.buttonText}>Button</Text>
-      </View>
-
-      <View style={styles.flexButton}>
-        <Text style={styles.buttonText}>Button</Text>
-      </View>
-      <View style={styles.flexButton}>
-        <Text style={styles.buttonText}>Button</Text>
-      </View>
       <TouchableOpacity
         onPress={() => dispatch({ type: "SHOW_EXPENSE_MODAL" })}
       >
