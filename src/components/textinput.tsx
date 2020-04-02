@@ -16,14 +16,11 @@ function CustomInput(
     onChangeText: () => {},
   }
 ) {
-  // const [value, onChangeText] = useState(props.defaultValue);
-
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.input}
         onChangeText={text => props.onChangeText(text)}
-        // value={value}
         keyboardType={props.type === "number" ? "numeric" : "default"}
         placeholder={props.placeholder}
       />

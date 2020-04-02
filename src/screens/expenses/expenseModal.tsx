@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { StyleSheet, Text, ActivityIndicator } from "react-native";
 import { useDispatch } from "react-redux";
 import { Colors } from "../../styles";
-import { useFixerApi } from "../../hooks/fixerApi";
+import { useFixerSymbolList } from "../../hooks/fixerApi";
 import Modal from "../../components/modal";
 import Overlay from "../../components/overlay";
 import MotionBlock from "../../components/motionBlock";
@@ -10,7 +10,7 @@ import Form from "./form";
 
 export default function ExpenseModal() {
   const dispatch = useDispatch();
-  const [{ data, isLoading, isError }, setUrl] = useFixerApi();
+  const { data, isLoading, isError } = useFixerSymbolList();
 
   return (
     <>
@@ -27,7 +27,7 @@ export default function ExpenseModal() {
             <ActivityIndicator size="large" color={Colors.primary} />
           )}
 
-          {!isLoading && !isError && data && <Form data={data} />}
+          {!isLoading && !isError && data && data.symbols && <Form symbols={data.symbols} />}
 
           {!isLoading && isError && (
             <Text>

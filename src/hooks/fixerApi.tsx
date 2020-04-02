@@ -4,10 +4,6 @@ import { FIXER_API_KEY, FIXER_API_URL } from "react-native-dotenv";
 
 const BASE_CURRENCY = "EUR";
 
-export interface ServerResponse {
-  data: IFixerResponse | IFixerSymbolResponse;
-}
-
 export interface IFixerError {
   type: string;
   info: string;
@@ -34,22 +30,32 @@ export interface IFixerSymbolResponse {
   error?: IFixerError;
 }
 
-export function useFixerApi(): [
-  {
-    data: ServerResponse;
-    isLoading: boolean;
-    isError: boolean;
-  },
-  Dispatch<SetStateAction<string>>
-] 
-{
-  const [data, setData] = useState<ServerResponse>();
-  // const [data, setData] = useState();
-  const [isError, setIsError] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [url, setUrl] = useState(
+export function useFixerSymbolList() {
+  const { data, isLoading, isError } = useFixerApi<IFixerSymbolResponse>(
     `${FIXER_API_URL}/symbols?access_key=${FIXER_API_KEY}`
   );
+
+  return {data, isLoading, isError}
+}
+
+export function useFixerRatesList() {
+  const { data, isLoading, isError } = useFixerApi<IFixerResponse>(
+    `${FIXER_API_URL}/latest?access_key=${FIXER_API_KEY}`
+  );
+
+  return { data, isLoading, isError };
+}
+
+function useFixerApi<T extends IFixerResponse | IFixerSymbolResponse>(url: string): 
+  {
+    data: T;
+    isLoading: boolean;
+    isError: boolean;
+  }
+{
+  const [data, setData] = useState<T>();
+  const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -57,8 +63,8 @@ export function useFixerApi(): [
       setIsLoading(true);
 
       try {
-        const result = await axios.request<ServerResponse>({ url });
-        // const result = await axios.request({ url });
+        const result = await axios.request<T>({ url });
+
         setData(result.data);
         setIsLoading(false);
       } catch (error) {
@@ -70,5 +76,5 @@ export function useFixerApi(): [
     fetchData();
   }, [url]);
 
-  return [{ data, isLoading, isError }, setUrl];
+  return { data, isLoading, isError }
 }

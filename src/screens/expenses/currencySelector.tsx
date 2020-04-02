@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, ViewStyle } from "react-native";
-import { ServerResponse } from "../../hooks/fixerApi";
+import { StyleSheet, View, ViewStyle } from "react-native";
+import { IFixerSymbols } from "../../hooks/fixerApi";
 import RNPickerSelect from "react-native-picker-select";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { Colors } from "../../styles";
 
-export default function CurrenySelector(props: { 
-  data: ServerResponse, 
-  style?: ViewStyle,
-  setValue: (name: string, any) => void
+export default function CurrenySelector(props: {
+  symbols: IFixerSymbols;
+  style?: ViewStyle;
+  setValue: (name: string, any) => void;
 }) {
   const [selectedValue, setSelectedValue] = useState("EUR");
 
-  // Typescript fix?
-  const symbolPairs = Object.entries(props.data.symbols);
   
-  const items = symbolPairs.map(([symbol, label]: [string, string]) => {
+  const symbolNames = Object.keys(props.symbols);
+
+  const items = symbolNames.map((symbol) => {
     return { label: symbol, value: symbol };
   });
 
@@ -53,11 +53,10 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     color: "#4A4A4A",
     marginBottom: 16,
-    width: '100%',
+    width: "100%"
   },
   iconContainer: {
     marginRight: 8,
-    marginTop: 5,
+    marginTop: 5
   }
 });
-

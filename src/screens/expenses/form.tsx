@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from "react";
-import {
-  StyleSheet,
-  Alert,
-  TextInput,
-  Text,
-  View
-} from "react-native";
+import { StyleSheet, Alert, TextInput, View, Text } from "react-native";
 import { useForm } from "react-hook-form";
 import moment from "moment";
-import MotionBlock from "../../components/motionBlock";
-import DateSelector from "./dateSelector";
+import { IFixerSymbols } from "../../hooks/fixerApi";
 import Button from "../../components/button";
-import CurrenySelector from "./currencySelector";
+import MotionBlock from "../../components/motionBlock";
 import { Typography, Views } from "../../styles";
+import CurrenySelector from "./currencySelector";
+import DateSelector from "./dateSelector";
 
 type FormData = {
   amount: string;
@@ -28,7 +23,11 @@ function getDate(selectedDayOfWeek: number) {
   return moment().add(difference, "days");
 }
 
-export default function Form({ data }) {
+interface FormProps {
+  symbols: IFixerSymbols;
+}
+
+export default function Form({ symbols }: FormProps) {
   const { register, handleSubmit, setValue } = useForm<FormData>();
   const onSubmit = ({ amount, currency, date }) => {
     const realDate = getDate(date);
@@ -39,14 +38,14 @@ export default function Form({ data }) {
       currencty: ${currency} \n 
       realDate: ${realDate.format("dddd, MMMM Do YYYY, h:mm:ss a")}`
     );
-  }
+  };
 
   useEffect(() => {
-    register('amount');
-    register('currency');
-    register('date');
-    register('shortDescription')
-  }, [register])
+    register("amount");
+    register("currency");
+    register("date");
+    register("shortDescription");
+  }, [register]);
 
   return (
     <>
@@ -76,7 +75,7 @@ export default function Form({ data }) {
           />
         </MotionBlock>
         <MotionBlock delay={125} style={{ flex: 1 }}>
-          <CurrenySelector data={data} setValue={setValue} />
+          <CurrenySelector symbols={symbols} setValue={setValue} />
         </MotionBlock>
       </View>
 
@@ -101,6 +100,6 @@ const styles = StyleSheet.create({
     flexDirection: "row"
   },
   amountInput: {
-    width: '100%'
+    width: "100%"
   }
 });
