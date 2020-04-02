@@ -1,5 +1,4 @@
 import * as Colors from './colors'
-// import * as Spacing from './spacing'
+import * as Views from './views'
 import * as Typography from './typography'
-
-export { Colors, Typography };
+export { Colors, Typography, Views };

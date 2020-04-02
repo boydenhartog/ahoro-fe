@@ -2,10 +2,10 @@ import { useEffect, useState, SetStateAction, Dispatch } from "react";
 import axios from "axios";
 import { FIXER_API_KEY, FIXER_API_URL } from "react-native-dotenv";
 
-const BASE_CURRENCY = 'EUR';
+const BASE_CURRENCY = "EUR";
 
-interface ServerResponse {
-  data: IFixerRates | IFixerResponse | IFixerSymbolResponse
+export interface ServerResponse {
+  data: IFixerResponse | IFixerSymbolResponse;
 }
 
 export interface IFixerError {
@@ -34,13 +34,17 @@ export interface IFixerSymbolResponse {
   error?: IFixerError;
 }
 
-export function useFixerApi():  [{ 
-  data: ServerResponse, 
-  isLoading: boolean, 
-  isError: boolean }, 
+export function useFixerApi(): [
+  {
+    data: ServerResponse;
+    isLoading: boolean;
+    isError: boolean;
+  },
   Dispatch<SetStateAction<string>>
-] {
+] 
+{
   const [data, setData] = useState<ServerResponse>();
+  // const [data, setData] = useState();
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [url, setUrl] = useState(
@@ -53,9 +57,8 @@ export function useFixerApi():  [{
       setIsLoading(true);
 
       try {
-        const result = await axios.request<ServerResponse>({
-          url: `${FIXER_API_URL}/latest?access_key=${FIXER_API_KEY}`
-        });
+        const result = await axios.request<ServerResponse>({ url });
+        // const result = await axios.request({ url });
         setData(result.data);
         setIsLoading(false);
       } catch (error) {

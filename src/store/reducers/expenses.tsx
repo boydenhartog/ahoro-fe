@@ -10,7 +10,7 @@ const expenses = (state = [], action) => {
           currency: action.currency,
           date: action.date,
           short_description: action.short_description,
-          user_id: action.user_id,
+          user_id: 1,
         }
       ]
     case 'PLUS_EXPENSE':

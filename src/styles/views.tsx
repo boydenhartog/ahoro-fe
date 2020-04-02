@@ -1,10 +1,21 @@
-import { shadow } from './colors';
+import { shadow, darkGrey } from "./colors";
 
 export const radius = {
     borderRadius: 6,
   };
 
 export const dropShadow = {
+  shadowColor: darkGrey,
+  shadowOffset: {
+    width: 0,
+    height: 5
+  },
+  shadowOpacity: 0.34,
+  shadowRadius: 6.27,
+  elevation: 10
+};
+
+export const innerShadow = {
   shadowColor: shadow,
   shadowOffset: {
     width: 0,
@@ -13,4 +24,13 @@ export const dropShadow = {
   shadowOpacity: 0.34,
   shadowRadius: 6.27,
   elevation: 10
+};
+export const defaultInput = {
+  height: 40,
+  borderColor: darkGrey,
+  borderWidth: 1,
+  borderRadius: 6,
+  paddingLeft: 10,
+  color: darkGrey,
+  marginBottom: 16,
 };

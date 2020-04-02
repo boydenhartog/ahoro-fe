@@ -1,4 +1,4 @@
-import { darkGrey } from './colors';
+import { darkGrey } from "./colors";
 
 export const extraLargeFontSize = 32;
 export const largeFontSize = 24;
@@ -15,8 +15,10 @@ export const screenTitle = {
 };
 
 export const title = {
-  fontSize: largeFontSize,
-  color: darkGrey
+  fontSize: 32,
+  color: darkGrey,
+  marginTop: 10,
+  marginBottom: 24,
 };
 
 export const subtitle = {
@@ -25,6 +27,6 @@ export const subtitle = {
 };
 
 export const base = {
-  fontSize: baseFontSize,
-  color: darkGrey
-};
+    fontSize: baseFontSize,
+    color: darkGrey
+  };
