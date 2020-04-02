@@ -1,10 +1,9 @@
 import React from 'react';
-import { StyleSheet, View, StatusBar } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { useSelector } from 'react-redux';
 import Overview from './overview';
 import Navbar from '../components/navbar';
 import ExpenseModal from './expenses/expenseModal';
-import { Colors } from "../styles";
 
 
 export default function Home() {
@@ -14,7 +13,6 @@ export default function Home() {
     <View style={styles.container}>
       <Overview />
       <Navbar />
-      <StatusBar backgroundColor={"blue"} />
 
       {ui.showExpenseModal && <ExpenseModal />}
     </View>

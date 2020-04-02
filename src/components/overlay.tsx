@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableWithoutFeedback
 } from "react-native";
+import { Colors } from '../styles';
 
 type overlayProps = {
   onClose: () => void,
@@ -42,12 +43,12 @@ const Overlay = (props: overlayProps) => {
 
 const styles = StyleSheet.create({
   overlay: {
-    backgroundColor: '#808080',
-    width: '100%',
-    height: '100%',
-    position: 'absolute',
-    alignItems: 'center',
-  },
+    backgroundColor: Colors.darkGrey,
+    width: "100%",
+    height: "100%",
+    position: "absolute",
+    alignItems: "center"
+  }
 });
 
 export default Overlay;

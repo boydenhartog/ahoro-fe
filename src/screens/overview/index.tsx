@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Expenses from './expensesContainer';
+import { Colors } from "../../styles";
 
 function Overview() {
   return (
@@ -58,11 +59,11 @@ const sheet = StyleSheet.create({
     paddingRight: 10,
   },
   topContainer: {
-    backgroundColor: '#4C6FE3',
+    backgroundColor: Colors.primary,
   },
   title: {
     fontSize: 20,
-    color: '#fff',
+    color: Colors.white,
   },
   mainContainer: {
     display: 'flex',
@@ -76,7 +77,7 @@ const sheet = StyleSheet.create({
   },
   mask: {
     marginTop:88,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: Colors.white,
     opacity: 0.14,
     height: 190,
     width: '95%',
@@ -87,8 +88,9 @@ const sheet = StyleSheet.create({
   },
   screenTitle: {
     marginTop: 30,
-    color: '#fff',
+    color: Colors.white,
     fontSize: 32,
+    marginLeft: 12,
     textAlign: 'left',
     marginBottom: 20,
   }

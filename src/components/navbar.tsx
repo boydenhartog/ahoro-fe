@@ -23,7 +23,6 @@ function NavBar() {
 const styles = StyleSheet.create({
   flexContainer: {
     display: "flex",
-    // backgroundColor: Colors.white,
     width: "100%",
     height: 80,
     position: "absolute",
