@@ -21,3 +21,7 @@ To do list:
     
 - Hook up form to redux
 - Branding
+
+As long as I'm hosting the app locally, you can view it on expo here: 
+exp://yu-wq7.anonymous.ahoro-fe.exp.direct:80
+
