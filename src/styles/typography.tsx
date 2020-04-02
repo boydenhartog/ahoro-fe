@@ -17,7 +17,6 @@ export const screenTitle = {
 export const title = {
   fontSize: 32,
   color: darkGrey,
-  marginTop: 10,
   marginBottom: 24,
 };
 

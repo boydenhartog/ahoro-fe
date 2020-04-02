@@ -19,7 +19,7 @@ export default function ExpenseModal() {
       ></Overlay>
       <MotionBlock style={styles.modalContainer}>
         <Modal
-          title="add expense"
+          title="Add expense"
           buttonText="Close modal"
           closeHandler={() => dispatch({ type: "HIDE_EXPENSE_MODAL" })}
         >
@@ -44,7 +44,6 @@ export default function ExpenseModal() {
 const styles = StyleSheet.create({
   modalContainer: {
     marginTop: 40,
-    padding: 20,
     flex: 1,
     top: 0,
     position: "absolute",

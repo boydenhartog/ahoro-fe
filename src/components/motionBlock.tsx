@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ReactNode } from "react";
+import React, { useEffect, ReactNode, useRef } from "react";
 import { Animated, ViewStyle } from "react-native";
 
 type MotionProps = {
@@ -8,7 +8,7 @@ type MotionProps = {
 };
 
 const MotionBlock = (props: MotionProps = { style: {}, delay: 0 }) => {
-  const [fadeAnim] = useState(new Animated.Value(0));
+  const { current: fadeAnim } = useRef(new Animated.Value(0));
 
   useEffect(() => {
     Animated.spring(fadeAnim, {

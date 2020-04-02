@@ -8,11 +8,9 @@ import { Colors } from "../../styles";
 export default function CurrenySelector(props: {
   symbols: IFixerSymbols;
   style?: ViewStyle;
-  setValue: (name: string, any) => void;
+  setValue: (name: string, value: string) => void;
 }) {
   const [selectedValue, setSelectedValue] = useState("EUR");
-
-  
   const symbolNames = Object.keys(props.symbols);
 
   const items = symbolNames.map((symbol) => {
