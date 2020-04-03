@@ -7,16 +7,16 @@ import Day from "./day";
 const Days = [
   { text: "m", day: 1 },
   { text: "t", day: 2 },
-  { text: 'w', day: 3 },
-  { text: 't', day: 4 },
-  { text: 'f', day: 5 },
-  { text: 's', day: 6 },
-  { text: 's', day: 7 },
+  { text: "w", day: 3 },
+  { text: "t", day: 4 },
+  { text: "f", day: 5 },
+  { text: "s", day: 6 },
+  { text: "s", day: 7 }
 ];
 
 interface DateSelectorProps<T> {
-  setValue: (name: string, value: T) => void
-};
+  setValue: (name: string, value: T) => void;
+}
 
 export default function DateSelector({ setValue }: DateSelectorProps<number>) {
   const currentDay = moment().isoWeekday();
@@ -24,9 +24,9 @@ export default function DateSelector({ setValue }: DateSelectorProps<number>) {
 
   const selectDay = (day: number) => {
     setDay(day);
-    setValue('date', day);
-  }
-  
+    setValue("dayOfWeek", day);
+  };
+
   return (
     <View style={styles.container}>
       {Days.map(({ day, text }, index) => (
@@ -43,13 +43,11 @@ export default function DateSelector({ setValue }: DateSelectorProps<number>) {
   );
 }
 
-
-
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center'
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
   },
   dayContainer: {
     width: 36,

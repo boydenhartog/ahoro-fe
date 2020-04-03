@@ -1,4 +1,4 @@
-import { useEffect, useState, SetStateAction, Dispatch } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { FIXER_API_KEY, FIXER_API_URL } from "react-native-dotenv";
 

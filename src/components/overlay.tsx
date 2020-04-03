@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   overlay: {
     backgroundColor: Colors.darkGrey,
     width: "100%",
-    height: "100%",
+    height: "110%",
     position: "absolute",
     alignItems: "center"
   }

@@ -1,8 +1,9 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { useDispatch } from "react-redux";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { useDispatch } from "react-redux";
 import { Colors, Views } from "../styles";
+import { showExpenseModal } from "../store/actions/ui"
 
 function NavBar() {
   const dispatch = useDispatch();
@@ -10,7 +11,7 @@ function NavBar() {
   return (
     <View style={styles.flexContainer}>
       <TouchableOpacity
-        onPress={() => dispatch({ type: "SHOW_EXPENSE_MODAL" })}
+        onPress={() => dispatch(showExpenseModal)}
       >
         <View style={[styles.addButton, Views.dropShadow]}>
           <Text style={styles.addButtonText}>+</Text>
@@ -32,15 +33,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "flex-end"
   },
-  flexButton: {
-    flex: 1,
-    backgroundColor: "yellow",
-    zIndex: 5
-  },
-  buttonText: {
-    color: "blue",
-    zIndex: 5
-  },
   addButton: {
     height: 80,
     width: 80,
@@ -54,7 +46,8 @@ const styles = StyleSheet.create({
   },
   addButtonText: {
     fontSize: 32,
-    color: Colors.darkGrey
+    fontWeight: "bold",
+    color: Colors.primary
   }
 });
 

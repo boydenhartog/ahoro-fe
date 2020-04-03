@@ -4,8 +4,8 @@ import React from "react";
 import { Platform, StatusBar } from "react-native";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
-import AppNavigator from "./src/navigation/";
 import rootReducer from "./src/store/reducers";
+import Home from "./src/screens/home";
 
 const store = createStore(rootReducer);
 
@@ -19,7 +19,7 @@ export default function App() {
     <Provider store={store}>
       <ApolloProvider client={client}>
         {Platform.OS === "ios" && <StatusBar barStyle="default" />}
-        <AppNavigator />
+        <Home />
       </ApolloProvider>
     </Provider>
   );

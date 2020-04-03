@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { useSelector } from "react-redux";
+import ExpensesList from "./expensesList";
 
 function ExpensesContainer() {
   const expenses = useSelector(state => state.expenses);
@@ -8,9 +9,8 @@ function ExpensesContainer() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Expenses: {expenses.length}</Text>
-      <View style={styles.daysContainer}>
-
-      </View>
+      <Text>{JSON.stringify(expenses)}</Text>
+      {/* <ExpensesList expenses={expenses} /> */}
     </View>
   );
 }
@@ -33,21 +33,10 @@ const styles = StyleSheet.create({
     shadowRadius: 6.27,
     elevation: 10
   },
-  daysContainer: {
-    flexDirection: "row"
-  },
   title: {
     fontSize: 20,
     color: "#4A4A4A"
   },
-  dayContainer: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    backgroundColor: "#F1F1F1",
-    marginLeft: 4,
-    marginRight: 4
-  }
 });
 
 export default ExpensesContainer;

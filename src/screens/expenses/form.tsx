@@ -2,17 +2,20 @@ import React, { useEffect } from "react";
 import { StyleSheet, Alert, TextInput, View } from "react-native";
 import { useForm } from "react-hook-form";
 import moment from "moment";
+import { useDispatch } from "react-redux";
 import { IFixerSymbols } from "../../hooks/fixerApi";
 import Button from "../../components/button";
 import MotionBlock from "../../components/motionBlock";
 import { Views } from "../../styles";
 import CurrenySelector from "./currencySelector";
 import DateSelector from "./dateSelector";
+import { addExpense } from "../../store/actions/expenses";
+
 
 type FormData = {
   amount: string;
   currency: string;
-  date: string;
+  dayOfWeek: number;
   shortDescription: string;
 };
 
@@ -25,26 +28,27 @@ function getDate(selectedDayOfWeek: number) {
 
 interface FormProps {
   symbols: IFixerSymbols;
+  onClose: () => void;
 }
 
-export default function Form({ symbols }: FormProps) {
+export default function Form({ symbols, onClose }: FormProps) {
   const { register, handleSubmit, setValue } = useForm<FormData>();
-  const onSubmit = ({ amount, currency, date }) => {
-    const realDate = getDate(date);
+  const dispatch = useDispatch();
 
-    Alert.alert(
-      "Form Data",
-      `amount: ${amount} \n 
-      currencty: ${currency} \n 
-      realDate: ${realDate.format("dddd, MMMM Do YYYY, h:mm:ss a")}`
-    );
+  const onSubmit = ({ amount, currency, dayOfWeek, shortDescription }) => {
+    const date = getDate(dayOfWeek);
+    dispatch(addExpense({ amount, currency, date, shortDescription }));
+    onClose();
   };
 
   useEffect(() => {
     register("amount");
     register("currency");
-    register("date");
+    register("dayOfWeek");
     register("shortDescription");
+
+    // Bug in picker package, doesn't set default value
+    setValue("currency", "EUR");
   }, [register]);
 
   return (
@@ -100,8 +104,8 @@ const styles = StyleSheet.create({
   amountInput: {
     width: "100%"
   },
-  amountInputContainer: { 
-    flex: 3, 
+  amountInputContainer: {
+    flex: 3,
     marginRight: 8
   }
 });

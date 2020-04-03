@@ -38,61 +38,61 @@ function Overview() {
 
 const sheet = StyleSheet.create({
   flexContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    width: '100%',
-    height: '100%',
+    display: "flex",
+    flexDirection: "column",
+    width: "100%",
+    height: "100%"
   },
   columnContainer: {
-    display: 'flex',
-    flexDirection: 'row',
+    display: "flex",
+    flexDirection: "row"
   },
   money: {
-    fontSize: 28,
+    fontSize: 28
   },
   column: {
-    flex: 1,
+    flex: 1
   },
   container: {
     flex: 1,
     paddingLeft: 10,
-    paddingRight: 10,
+    paddingRight: 10
   },
   topContainer: {
-    backgroundColor: Colors.primary,
+    // backgroundColor: Colors.primary
   },
   title: {
     fontSize: 20,
-    color: Colors.white,
+    color: Colors.white
   },
   mainContainer: {
-    display: 'flex',
+    display: "flex",
     height: 190,
-    width: '95%',
+    width: "95%",
     zIndex: 3,
-    backgroundColor: 'transparent',
-    alignSelf: 'center',
+    backgroundColor: "transparent",
+    alignSelf: "center",
     paddingLeft: 20,
-    paddingTop: 20,
+    paddingTop: 20
   },
   mask: {
-    marginTop:88,
+    marginTop: 88,
     backgroundColor: Colors.white,
     opacity: 0.14,
     height: 190,
-    width: '95%',
+    width: "95%",
     zIndex: 2,
-    alignSelf: 'center',
-    position: 'absolute',
-    borderRadius: 6,
+    alignSelf: "center",
+    position: "absolute",
+    borderRadius: 6
   },
   screenTitle: {
     marginTop: 30,
     color: Colors.white,
     fontSize: 32,
     marginLeft: 12,
-    textAlign: 'left',
-    marginBottom: 20,
+    textAlign: "left",
+    marginBottom: 20
   }
 });
 

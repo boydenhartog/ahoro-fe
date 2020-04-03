@@ -5,26 +5,28 @@ import RNPickerSelect from "react-native-picker-select";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { Colors } from "../../styles";
 
+const DEFAULT_CURRENCY = "EUR";
+
 export default function CurrenySelector(props: {
   symbols: IFixerSymbols;
   style?: ViewStyle;
   setValue: (name: string, value: string) => void;
 }) {
-  const [selectedValue, setSelectedValue] = useState("EUR");
+  const [selectedValue, setSelectedValue] = useState(DEFAULT_CURRENCY);
   const symbolNames = Object.keys(props.symbols);
-
-  const items = symbolNames.map((symbol) => {
+  const items = symbolNames.map(symbol => {
     return { label: symbol, value: symbol };
   });
 
-  useEffect(() => {
-    props.setValue("currency", selectedValue);
-  }, [selectedValue]);
+  const changeValue = itemValue => {
+    props.setValue("currency", itemValue);
+    setSelectedValue(itemValue);
+  };
 
   return (
     <View style={[props.style, styles.pickerContainer]}>
       <RNPickerSelect
-        onValueChange={itemValue => setSelectedValue(itemValue)}
+        onValueChange={itemValue => changeValue(itemValue)}
         items={items}
         value={selectedValue}
         style={{ inputIOS: styles.input, iconContainer: styles.iconContainer }}

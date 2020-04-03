@@ -6,12 +6,13 @@ export const radius = {
 
 export const dropShadow = {
   shadowColor: darkGrey,
+  margin: 8,
   shadowOffset: {
-    width: 0,
-    height: 5
+    width: 2,
+    height: 4
   },
-  shadowOpacity: 0.34,
-  shadowRadius: 6.27,
+  shadowOpacity: 0.4,
+  shadowRadius: 3,
   elevation: 10
 };
 
@@ -19,7 +20,7 @@ export const innerShadow = {
   shadowColor: shadow,
   shadowOffset: {
     width: 0,
-    height: 5
+    height: 6.27
   },
   shadowOpacity: 0.34,
   shadowRadius: 6.27,

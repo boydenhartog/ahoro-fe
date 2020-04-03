@@ -27,7 +27,7 @@ const MotionBlock = (props: MotionProps = { style: {}, delay: 0 }) => {
           {
             translateY: fadeAnim.interpolate({
               inputRange: [0, 1],
-              outputRange: [50, 0]
+              outputRange: [20, 0]
             })
           }
         ]
