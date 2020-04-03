@@ -4,7 +4,7 @@ import { useSpringColors } from "../../hooks/animation";
 
 export default function Day(props) {
   const [animVal] = useState(new Animated.Value(1));
-  const springIn = Animated.spring(animVal, { toValue: 1.3 });
+  const springIn = Animated.spring(animVal, { toValue: 1.2 });
   const springOut = Animated.spring(animVal, { toValue: 1 });
   const { bgColor, textColor } = useSpringColors(props.selected);
 

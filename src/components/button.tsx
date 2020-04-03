@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { Colors, Views } from "../styles";
 
 interface ButtonProps {
   text: String;
@@ -23,11 +24,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: 200,
     height: 50,
-    backgroundColor: "#4C6FE3",
-    borderRadius: 6
+    backgroundColor: Colors.primary,
+    borderRadius: Views.borderRadius
   },
   buttonText: {
-    color: "#fff",
+    color: Colors.white,
     fontSize: 20
   }
 });

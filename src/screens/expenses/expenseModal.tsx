@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { ActivityIndicator, StyleSheet, Text } from "react-native";
 import { useDispatch } from "react-redux";
 import Modal from "../../components/modal";
@@ -12,7 +12,7 @@ import { hideExpenseModal } from "../../store/actions/ui";
 export default function ExpenseModal() {
   const dispatch = useDispatch();
   const { data, isLoading, isError } = useFixerSymbolList();
-  const closeModal = useCallback(() => dispatch(hideExpenseModal), [dispatch]);
+  const closeModal = () => dispatch(hideExpenseModal);
 
   return (
     <>

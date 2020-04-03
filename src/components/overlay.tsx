@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ReactNode } from 'react';
+import React, { useRef, useEffect, ReactNode } from "react";
 import {
   Animated,
   ViewStyle,
@@ -14,7 +14,7 @@ type overlayProps = {
 }
 
 const Overlay = (props: overlayProps) => {
-  const [fadeAnim] = useState(new Animated.Value(0));
+  const fadeAnim = useRef(new Animated.Value(0)).current;
  
   useEffect(() => {
     Animated.timing(

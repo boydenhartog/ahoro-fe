@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Animated } from "react-native";
 import { Colors } from "../styles";
 
@@ -7,7 +7,7 @@ export function useSpringColors(
   color1: string = Colors.unselectedRGB, 
   color2: string = Colors.primaryRGB
 ) {
-  const [colorVal] = useState(new Animated.Value(0));
+  const colorVal = useRef(new Animated.Value(0)).current;
   const bgColor = colorVal.interpolate({
     inputRange: [0, 1],
     outputRange: [color1, color2]
