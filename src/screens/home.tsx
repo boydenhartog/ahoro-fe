@@ -25,6 +25,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.primary,
     alignItems: "center",
-    paddingTop: 32
+    paddingTop: 40
   }
 });

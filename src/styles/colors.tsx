@@ -8,3 +8,4 @@ export const offWhite = "#f8f8ff";
 export const unselected = "#F1F1F1";
 export const unselectedRGB = "rgb(241, 241, 241)";
 
+export const error = "#E63462"

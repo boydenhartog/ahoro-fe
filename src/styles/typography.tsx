@@ -11,13 +11,13 @@ export const headerFontSize = 18;
 
 export const screenTitle = {
   fontSize: extraLargeFontSize,
-  textAlign: "left",
+  textAlign: "left"
 };
 
 export const title = {
   fontSize: 32,
   color: darkGrey,
-  marginBottom: 24,
+  marginBottom: 24
 };
 
 export const subtitle = {
@@ -26,6 +26,10 @@ export const subtitle = {
 };
 
 export const base = {
-    fontSize: baseFontSize,
-    color: darkGrey
-  };
+  fontSize: baseFontSize,
+  color: darkGrey
+};
+
+export const alignRight = {
+  textAlign: "right",
+};

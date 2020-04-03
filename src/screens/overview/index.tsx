@@ -1,42 +1,41 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Expenses from './expensesContainer';
-import { Colors } from "../../styles";
+import ExpensesContainer from './expensesContainer';
+import { Colors, Typography } from "../../styles";
 
 function Overview() {
   return (
-    <View style={sheet.flexContainer}>
-      <View style={[sheet.container, sheet.topContainer]}>
-        <Text style={sheet.screenTitle}>Summary</Text>
+    <View style={styles.flexContainer}>
+      <View style={styles.container}>
+        <Text style={[Typography.title, styles.screenTitle]}>Summary</Text>
 
-        <View style={sheet.mainContainer}>
-          <View style={sheet.container}>
-            <Text style={sheet.title}>Today</Text>
+        <View style={styles.mainContainer}>
+          <View style={styles.container}>
+            <Text style={styles.title}>Today</Text>
           </View>
-          <View style={sheet.container}>
-            <View style={sheet.columnContainer}>
-              <View style={sheet.column}>
-                <Text style={sheet.title}>Spent</Text>
-                <Text style={[sheet.title, sheet.money]}>$40.98</Text>
+          <View style={styles.container}>
+            <View style={styles.columnContainer}>
+              <View style={styles.column}>
+                <Text style={styles.title}>Spent</Text>
+                <Text style={[styles.title, styles.money]}>$40.98</Text>
               </View>
-              <View style={sheet.column}>
-                <Text style={sheet.title}>Left</Text>
-                <Text style={[sheet.title, sheet.money]}>$7.32</Text>
+              <View style={styles.column}>
+                <Text style={styles.title}>Left</Text>
+                <Text style={[styles.title, styles.money]}>$7.32</Text>
               </View>
             </View>
           </View>
         </View>
 
-        <View style={sheet.mask}></View>
-        
-        <Expenses />
+        <View style={styles.mask}></View>
 
+        <ExpensesContainer />
       </View>
     </View>
   );
 }
 
-const sheet = StyleSheet.create({
+const styles = StyleSheet.create({
   flexContainer: {
     display: "flex",
     flexDirection: "column",
@@ -56,10 +55,8 @@ const sheet = StyleSheet.create({
   container: {
     flex: 1,
     paddingLeft: 10,
-    paddingRight: 10
-  },
-  topContainer: {
-    // backgroundColor: Colors.primary
+    paddingRight: 10,
+    alignItems: "center"
   },
   title: {
     fontSize: 20,
@@ -73,7 +70,8 @@ const sheet = StyleSheet.create({
     backgroundColor: "transparent",
     alignSelf: "center",
     paddingLeft: 20,
-    paddingTop: 20
+    paddingTop: 20,
+    alignItems: "flex-start"
   },
   mask: {
     marginTop: 88,
@@ -89,7 +87,7 @@ const sheet = StyleSheet.create({
   screenTitle: {
     marginTop: 30,
     color: Colors.white,
-    fontSize: 32,
+    alignSelf: "flex-start",
     marginLeft: 12,
     textAlign: "left",
     marginBottom: 20
