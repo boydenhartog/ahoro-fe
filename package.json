@@ -18,7 +18,7 @@
     "eslint-import-resolver-babel-plugin-root-import": "^1.1.1",
     "expo": "~36.0.0",
     "graphql": "^14.6.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
     "react-hook-form": "^5.2.0",
